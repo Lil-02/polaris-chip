@@ -33,7 +33,7 @@ export class MyCard extends LitElement {
       }
       
       img {
-        max-width: 100%;
+        max-width: 400px;
         border-radius: 8px;
       }
       h1, h2 {
@@ -71,7 +71,7 @@ export class MyCard extends LitElement {
         <details ?open="${this.fancy}" @toggle="${this.openChanged}">
         <summary>Choices</summary>
         <div>
-         <slot>${this.choices}</slot>
+         <slot></slot>
         </div>
     </details>
         <p><slot name= "Choices">${this.choices} </slot></p>
