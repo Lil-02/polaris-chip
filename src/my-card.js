@@ -7,11 +7,12 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = 'Happy Valentines Day!';
-    this.subtitle = 'Will you be my Valentine?';
-    this.imgSrc = "https://cdn.shopify.com/s/files/1/0139/0811/5514/files/Glad_Dreams_Giver-_Tier_3_480x480.png?v=160322954https://codepen.io/your-work8";
-    this.bgColor = null;
+    this.title = "";
+    this.subtitle = "";
+    this.imgSrc = "";
     this.fancy = false;
+    this.bgColor= "";
+    this.choices;
   }
 
   static get styles() {
@@ -21,13 +22,12 @@ export class MyCard extends LitElement {
         margin: 16px;
       }
       .container {
-        background-color: var(--bg-color, #pink);
         padding: 16px;
         text-align: center;
       }
       :host([fancy]) {
         display: block;
-        background-color: pink;
+        background-color: var(--bg-color, #790d6e);
         border: 2px solid fuchsia;
         box-shadow: 10px 5px 5px blue
       }
@@ -52,13 +52,29 @@ export class MyCard extends LitElement {
       fancy: {type: Boolean, reflect: true }
     };
   }
-
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
+  }
   render() {
     return html`
       <div class="container" style="background-color: ${this.bgColor}">
         <h1>${this.title}</h1>
         <h2>${this.subtitle}</h2>
-        <slot></slot>
+        <h3>${this.choices}</h3>
+
+        <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+        <summary>Choices</summary>
+        <div>
+         <slot>${this.choices}</slot>
+        </div>
+    </details>
+        <p><slot name= "Choices">${this.choices} </slot></p>
         <img src="${this.imgSrc}" alt="Card Image" />
       </div>
     `;
