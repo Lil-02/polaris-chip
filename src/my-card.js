@@ -10,7 +10,8 @@ export class MyCard extends LitElement {
     this.title = 'Happy Valentines Day!';
     this.subtitle = 'Will you be my Valentine?';
     this.imgSrc = "https://cdn.shopify.com/s/files/1/0139/0811/5514/files/Glad_Dreams_Giver-_Tier_3_480x480.png?v=160322954https://codepen.io/your-work8";
-    this.bgColor = '#f9f9f9';
+    this.bgColor = null;
+    this.fancy = false;
   }
 
   static get styles() {
@@ -18,15 +19,19 @@ export class MyCard extends LitElement {
       :host {
         display: block;
         margin: 16px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
       }
       .container {
-        background-color: var(--bg-color, #f9f9f9);
+        background-color: var(--bg-color, #pink);
         padding: 16px;
         text-align: center;
       }
+      :host([fancy]) {
+        display: block;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px blue
+      }
+      
       img {
         max-width: 100%;
         border-radius: 8px;
@@ -44,6 +49,7 @@ export class MyCard extends LitElement {
       subtitle: { type: String },
       imgSrc: { type: String },
       bgColor: { type: String },
+      fancy: {type: Boolean, reflect: true }
     };
   }
 
@@ -52,6 +58,7 @@ export class MyCard extends LitElement {
       <div class="container" style="background-color: ${this.bgColor}">
         <h1>${this.title}</h1>
         <h2>${this.subtitle}</h2>
+        <slot></slot>
         <img src="${this.imgSrc}" alt="Card Image" />
       </div>
     `;
