@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-
 export class MyCard extends LitElement {
   static get tag() {
     return 'my-card';
@@ -20,6 +19,7 @@ export class MyCard extends LitElement {
       :host {
         display: block;
         margin: 20px;
+        background-color: white;
       }
       .container {
         padding: 10px;
@@ -27,9 +27,9 @@ export class MyCard extends LitElement {
       }
       :host([fancy]) {
         display: block;
-        background-color: var(--bg-color, #7c1c7b);
-        border: 20px solid black;
-        box-shadow: 10px 5px 5px fuchsia
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
       }
       
       img {
