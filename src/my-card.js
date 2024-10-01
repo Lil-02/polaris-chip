@@ -19,21 +19,21 @@ export class MyCard extends LitElement {
     return css`
       :host {
         display: block;
-        margin: 16px;
+        margin: 20px;
       }
       .container {
-        padding: 16px;
+        padding: 10px;
         text-align: center;
       }
       :host([fancy]) {
         display: block;
-        background-color: var(--bg-color, #790d6e);
-        border: 2px solid fuchsia;
-        box-shadow: 10px 5px 5px blue
+        background-color: var(--bg-color, #7c1c7b);
+        border: 20px solid black;
+        box-shadow: 10px 5px 5px fuchsia
       }
       
       img {
-        max-width: 400px;
+        max-width: 600px;
         border-radius: 8px;
       }
       h1, h2 {
@@ -68,7 +68,7 @@ export class MyCard extends LitElement {
         <h2>${this.subtitle}</h2>
         <h3>${this.choices}</h3>
 
-        <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+        <details @toggle="${this.openChanged}">
         <summary>Choices</summary>
         <div>
          <slot></slot>
